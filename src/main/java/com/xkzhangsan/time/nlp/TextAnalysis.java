@@ -16,7 +16,7 @@ public class TextAnalysis {
 	
 	private static volatile TextAnalysis instance;
 	private static volatile Pattern pattern;
-    private boolean isPreferFuture = true;
+    private boolean isPreferFuture = false; //todo true时：倾向于使用未来时间，例如19点50，可能会解析成明天19:50  false时：倾向于使用当天时间
 
 	private TextAnalysis(){
 		try {

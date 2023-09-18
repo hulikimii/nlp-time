@@ -12,14 +12,30 @@ import java.util.concurrent.*;
 
 /**
  * 时间自然语言解析工具类测试
+ * TextAnalysis类 isPreferFuture 属性可以设置true时：倾向于使用未来时间，例如19点50，可能会解析成明天19:50  false时：倾向于使用当天时间
  *
  * @author xkzhangsan
  */
 public class TimeNLPUtilTest {
 
+    //
     @Test
-    public void test() {
-        System.out.println(TimeNLPUtil.parse("30分钟前").get(0));
+    public void test() throws InterruptedException, ExecutionException, TimeoutException {
+        System.out.println(TimeNLPUtil.parseConcurrent("30分钟前").get(0));
+        System.out.println(TimeNLPUtil.parseConcurrent("30分钟后").get(0));
+        System.out.println(TimeNLPUtil.parseConcurrent("两天前").get(0));
+        System.out.println(TimeNLPUtil.parseConcurrent("两天后").get(0));
+        System.out.println(TimeNLPUtil.parseConcurrent("下周一").get(0));
+        System.out.println(TimeNLPUtil.parseConcurrent("19点50").get(0));
+        System.out.println(TimeNLPUtil.parseConcurrent("19点20").get(0));
+        System.out.println(TimeNLPUtil.parseConcurrent("12点20").get(0));
+        System.out.println(TimeNLPUtil.parseConcurrent("20点20").get(0));
+        System.out.println(TimeNLPUtil.parseConcurrent("上午5点半").get(0));
+        System.out.println(TimeNLPUtil.parseConcurrent("下午5点半").get(0));
+        System.out.println(TimeNLPUtil.parseConcurrent("今天下午5点半").get(0));
+        System.out.println(TimeNLPUtil.parseConcurrent("明天上午5点半").get(0));
+        System.out.println(TimeNLPUtil.parseConcurrent("明天下午5点半").get(0));
+        System.out.println(TimeNLPUtil.parseConcurrent("明天10点").get(0));
     }
 
     /**

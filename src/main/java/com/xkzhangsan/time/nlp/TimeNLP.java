@@ -1152,9 +1152,9 @@ public class TimeNLP {
                 return;
             }
         }
-        //准备增加的时间单位是被检查的时间的上一级，将上一级时间+1   todo 这里改成0，不带日期描述的时间都默认为是今天
+        //准备增加的时间单位是被检查的时间的上一级，将上一级时间+1
 //        localDateTime = localDateTime.plus(1, (TemporalUnit) TUNIT_MAP.get(checkTimeIndex - 1 + 10));
-        localDateTime = localDateTime.plus(0, (TemporalUnit) TUNIT_MAP.get(checkTimeIndex - 1 + 10));
+        localDateTime = localDateTime.plus(1, (TemporalUnit) TUNIT_MAP.get(checkTimeIndex - 1 + 10));
 
         for (int i = 0; i < checkTimeIndex; i++) {
             timeContext.getTunit()[i] = localDateTime.get((TemporalField) TUNIT_MAP.get(i));
